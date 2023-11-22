@@ -87,6 +87,8 @@ public class BooksController : ControllerBase
     /// <response code="204">The book is deleted</response>
     /// <response code="404">If the book is not found</response>
     [HttpDelete("{id:length(24)}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(string id)
     {
         var book = await _booksService.GetAsync(id);
